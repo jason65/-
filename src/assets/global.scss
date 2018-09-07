@@ -1,0 +1,322 @@
+@import './reset.scss';
+@function torem($px) {
+    //$px为需要转换的字号
+    @return $px / 14px * 1rem; //40px为根字体大小
+}
+
+@mixin center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-size: 14px !important;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    height: 100%;
+    overflow: hidden;
+}
+
+#read-wrapper {
+    position: relative;
+    font-size: 1.2rem;
+    .hideBoxShadow {
+        box-shadow: none !important;
+    }
+    .header {
+        position: absolute;
+        top: 0;
+        display: flex;
+        left: 0;
+        z-index: 101;
+        width: 100%;
+        height: torem(42px);
+        background-color: #fff;
+        box-shadow: 0 torem(8px) torem(8px) rgba(0, 0, 0, 0.15);
+        .headerLeft {
+            width: torem(100px);
+            height: 100%;
+            @include center;
+        }
+        .headerRight {
+            flex: 1;
+            height: 100%;
+            justify-content: flex-end;
+            display: flex;
+            .headerRightFlex1 {
+                @include center;
+                width: torem(68px);
+                font-size: 1.4rem;
+            }
+            .headerRightFlex2 {
+                @include center;
+                width: torem(68px);
+            }
+            .headerRightFlex3 {
+                @include center;
+                width: torem(68px);
+                font-size: 1.4rem;
+            }
+        }
+    }
+    .fade-enter,
+    .fade-leave-to {
+        transform: translateY(-100%);
+    }
+    .fade-enter-active,
+    .fade-leave-active,
+    .slide-enter-active,
+    .slide-leave-active {
+        transition: all 0.3s linear;
+    }
+    .fade-leave,
+    .slide-enter-to,
+    .slide-leave,
+    .fade-enter-to {
+        transform: translateY(0);
+    }
+    .slide-enter,
+    .slide-leave-to {
+        transform: translateY(torem(110px));
+    }
+    .sideslip-enter {
+        transform: translateX(-100%);
+    }
+    .sideslip-enter-to {
+        transform: translateX(0%);
+    }
+    .sideslip-enter-active {
+        transition: all 0.5s linear;
+    }
+    .sideslip-leave {
+        transform: translateX(0%);
+    }
+    .sideslip-leave-to {
+        transform: translateX(-100%);
+    }
+    .sideslip-leave-active {
+        transition: all 0.5s linear;
+    }
+    .bottom {
+        width: 100%;
+        height: torem(42px);
+        position: absolute;
+        display: flex;
+        bottom: 0;
+        background-color: #fff;
+        left: 0;
+        z-index: 101;
+        box-shadow: 0 torem(-8px) torem(8px) rgba(0, 0, 0, 0.15);
+        .bottomRightFlex1 {
+            flex: 1;
+            @include center;
+        }
+        .bottomRightFlex2 {
+            flex: 1;
+            @include center;
+        }
+        .bottomRightFlex3 {
+            flex: 1;
+            @include center;
+            font-size: 1.4rem;
+        }
+        .bottomRightFlex4 {
+            flex: 1;
+            @include center;
+        }
+    }
+    .extraArea {
+        position: absolute;
+        left: 0;
+        background-color: aliceblue;
+        bottom: torem(42px);
+        height: torem(68px);
+        width: 100%;
+        display: flex;
+        z-index: 101;
+        box-shadow: 0 torem(-8px) torem(8px) rgba(0, 0, 0, 0.15);
+        .prefixHead {
+            flex: 0 1 torem(68px);
+            @include center; // justify-content: flex-end;
+        }
+        .font {
+            flex: 1;
+            @include center;
+            :first-child {
+                :first-child {
+                    border-top: none !important;
+                }
+            }
+            :last-child {
+                :last-child {
+                    border-top: none !important;
+                }
+            }
+            .settingArea {
+                flex: 1;
+                @include center;
+                .line {
+                    flex: 1;
+                    height: 0;
+                    border-top: torem(1px) solid #ccc;
+                }
+                .point-wrapper {
+                    width: 0px;
+                    height: torem(16px);
+                    position: relative;
+                    border-left: torem(1px) solid #ccc;
+                    .point {
+                        position: absolute;
+                        top: torem(-4px);
+                        left: torem(-10px);
+                        width: torem(20px);
+                        height: torem(20px);
+                        border-radius: 50%;
+                        background-color: #fff;
+                        box-shadow: torem(4px) torem(4px) torem(4px) #ccc;
+                        .core {
+                            position: absolute;
+                            top: torem(6px);
+                            left: torem(6px);
+                            width: torem(8px);
+                            height: torem(8px);
+                            border-radius: 50%;
+                            background-color: #000;
+                        }
+                    }
+                }
+            }
+        }
+        .prefixTail {
+            flex: 0 1 torem(68px);
+            @include center; // justify-content: flex-start;
+        }
+        .themeCon {
+            height: 100%;
+            flex: 1;
+            flex-direction: column;
+            @include center;
+            .theme {
+                height: calc(100% - 20px);
+                width: 100%;
+                padding: 5px !important;
+                box-sizing: border-box;
+                div {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .themeName {
+                height: torem(20px);
+                @include center;
+            }
+        }
+        .rangeDiv {
+            input[type='range'] {
+                width: 100%;
+                -webkit-appearance: none;
+                border-radius: 10px;
+                height: 4px;
+                background-color: #ccc;
+                background: -webkit-linear-gradient(#999, #999) no-repeat #ccc;
+                background-size: 0% 100%;
+            }
+            input[type='range']:focus {
+                outline: none;
+            }
+            /*轨道*/
+            input[type='range']::-webkit-slider-runnable-track {}
+            /*滑块*/
+            input[type='range']::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                height: 20px;
+                width: 20px;
+                margin-top: -1px;
+                background: #ffffff !important;
+                box-shadow: 1px 1px 2px #999;
+                border-radius: 50%;
+            }
+            input[type='range']::-webkit-slider-thumb:active {
+                height: 26px;
+                width: 26px;
+            }
+        }
+    }
+    #readMask {
+        & {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            right: 0;
+        }
+        .left {
+            width: 30%;
+            flex-grow: 0;
+            height: 100%;
+        }
+        .center {
+            flex-grow: 1;
+            height: 100%;
+        }
+        .right {
+            flex-grow: 0;
+            width: 30%;
+            height: 100%;
+        }
+    }
+    .outCon {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        .chapterMask {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(51, 51, 51, 0.75);
+            z-index: 200;
+        }
+        .chapterDiv {
+            position: absolute;
+            height: 100%;
+            padding: 60px 40px 40px 40px;
+            background-color: #fff;
+            z-index: 300;
+            width: 40%;
+            ul {
+                height: calc(100% - 100px);
+                li {
+                    @include center;
+                    justify-content: flex-start;
+                }
+            }
+        }
+        .loading {
+            height: 100%;
+            @include center;
+        }
+    }
+}
